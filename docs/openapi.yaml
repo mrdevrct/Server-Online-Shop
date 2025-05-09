@@ -1,0 +1,421 @@
+openapi: 3.0.3
+info:
+  title: Shop Server API
+  description: API for user authentication, reporting, and admin actions in the shop-server application.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Development server
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        data: {}
+        meta:
+          type: object
+          properties:
+            has_error:
+              type: boolean
+            message:
+              type: string
+              nullable: true
+            status:
+              type: integer
+      example:
+        data: {}
+        meta:
+          has_error: true
+          message: Invalid or expired token
+          status: 401
+    AuthRequest:
+      type: object
+      required: [email]
+      properties:
+        email:
+          type: string
+          format: email
+          description: User's email address
+    VerifyRequest:
+      type: object
+      required: [email, code]
+      properties:
+        email:
+          type: string
+          format: email
+          description: User's email address
+        code:
+          type: string
+          description: Verification code sent to email
+    ReportRequest:
+      type: object
+      required: [reportedUserId, reason]
+      properties:
+        reportedUserId:
+          type: string
+          description: ID of the user to report
+        reason:
+          type: string
+          description: Reason for the report
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          description: User ID
+        username:
+          type: string
+          description: Generated username (e.g., user-20250509)
+        email:
+          type: string
+          format: email
+          description: User's email
+        userType:
+          type: string
+          enum: [USER, ADMIN]
+          description: User type
+        adminStatus:
+          type: string
+          enum: [USER_REGISTRED, SUPER_ADMIN]
+          description: Admin status
+        reportCount:
+          type: integer
+          description: Number of reports against the user
+        isBanned:
+          type: boolean
+          description: Whether the user is banned
+paths:
+  /api/users/auth:
+    post:
+      summary: Initiate user authentication
+      description: Sends a verification code to the user's email for login or registration.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthRequest"
+      responses:
+        "200":
+          description: Verification code sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Verification code sent to your email
+                  meta:
+                    type: object
+                    properties:
+                      has_error:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        nullable: true
+                      status:
+                        type: integer
+                        example: 200
+        "400":
+          description: Invalid email
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      tags: [Authentication]
+  /api/users/verify:
+    post:
+      summary: Verify authentication code
+      description: Verifies the code and returns a JWT token. Creates a new user if email doesn't exist.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VerifyRequest"
+      responses:
+        "200":
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        description: JWT token
+                      user:
+                        $ref: "#/components/schemas/UserProfile"
+                  meta:
+                    type: object
+                    properties:
+                      has_error:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        nullable: true
+                      status:
+                        type: integer
+                        example: 200
+        "400":
+          description: Invalid or expired code
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      tags: [Authentication]
+  /api/users/profile:
+    get:
+      summary: Get user profile
+      description: Retrieves the authenticated user's profile information.
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: User profile retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/UserProfile"
+                  meta:
+                    type: object
+                    properties:
+                      has_error:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        nullable: true
+                      status:
+                        type: integer
+                        example: 200
+        "401":
+          description: Invalid or expired token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "403":
+          description: User is banned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      tags: [User]
+  /api/reports:
+    post:
+      summary: Report a user
+      description: Submits a report against a user for inappropriate behavior.
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportRequest"
+      responses:
+        "201":
+          description: Report submitted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Report submitted successfully
+                  meta:
+                    type: object
+                    properties:
+                      has_error:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        nullable: true
+                      status:
+                        type: integer
+                        example: 201
+        "400":
+          description: Invalid reported user ID
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Invalid or expired token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "403":
+          description: Reported user is already banned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      tags: [Report]
+  /api/reports/users/{userId}/ban:
+    put:
+      summary: Ban a user
+      description: Bans a user (Super Admin only).
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+          description: ID of the user to ban
+      responses:
+        "200":
+          description: User banned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: User banned successfully
+                  meta:
+                    type: object
+                    properties:
+                      has_error:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        nullable: true
+                      status:
+                        type: integer
+                        example: 200
+        "401":
+          description: Invalid or expired token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "403":
+          description: Unauthorized (Super Admin required)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      tags: [Admin]
+  /api/reports/users/{userId}/unban:
+    put:
+      summary: Unban a user
+      description: Unbans a user (Super Admin only).
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+          description: ID of the user to unban
+      responses:
+        "200":
+          description: User unbanned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: User unbanned successfully
+                  meta:
+                    type: object
+                    properties:
+                      has_error:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        nullable: true
+                      status:
+                        type: integer
+                        example: 200
+        "401":
+          description: Invalid or expired token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "403":
+          description: Unauthorized (Super Admin required)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      tags: [Admin]
+  /api/users/test-auth:
+    get:
+      summary: Test authentication
+      description: Tests if the JWT token is valid and returns the authenticated user's email.
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Authenticated as superadmin@gmail.com
+                  meta:
+                    type: object
+                    properties:
+                      has_error:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        nullable: true
+                      status:
+                        type: integer
+                        example: 200
+        "401":
+          description: Invalid or expired token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      tags: [Authentication]

@@ -3,14 +3,23 @@ const { sendVerificationCode } = require("../../../common/helpers/email");
 const bcrypt = require("bcrypt");
 const logger = require("../../../common/logger/winston");
 
+// لیست فیچرهای پیش‌فرض برای کاربران عادی
+const defaultUserFeatures = [
+  { id: 1, feature: "HOME", access: "FULL_ACCESS" },
+  { id: 2, feature: "ADD_TICKET", access: "NO_ACCESS" },
+  { id: 3, feature: "VIEW_TICKET", access: "NO_ACCESS" },
+  { id: 4, feature: "EDIT_TICKET", access: "NO_ACCESS" },
+  { id: 5, feature: "DELETE_TICKET", access: "NO_ACCESS" },
+];
+
 const generateVerificationCode = () => {
-  return Math.floor(100000 + Math.random() * 900000).toString(); // کد 6 رقمی
+  return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
 const generateDefaultUsername = () => {
   const date = new Date();
-  const dateString = date.toISOString().slice(0, 10).replace(/-/g, ""); // YYYYMMDD
-  return `user-${dateString}`; // مثلاً user-20250509
+  const dateString = date.toISOString().slice(0, 10).replace(/-/g, "");
+  return `user-${dateString}`;
 };
 
 const userService = {
@@ -19,12 +28,10 @@ const userService = {
     try {
       let user = await User.findOne({ email });
       const code = generateVerificationCode();
-      const expires = new Date(Date.now() + 10 * 60 * 1000); // 10 دقیقه
+      const expires = new Date(Date.now() + 10 * 60 * 1000);
 
       if (!user) {
-        // ثبت‌نام کاربر جدید
         let username = generateDefaultUsername();
-        // اطمینان از یکتا بودن نام کاربری
         let usernameIndex = 1;
         while (await User.findOne({ username })) {
           username = `${generateDefaultUsername()}-${usernameIndex}`;
@@ -36,11 +43,10 @@ const userService = {
           email,
           verificationCode: code,
           verificationCodeExpires: expires,
-          featureAccess: [{ id: 1, feature: "HOME", access: "FULL_ACCESS" }],
+          featureAccess: defaultUserFeatures,
         });
         logger.info(`New user created: ${email} with username ${username}`);
       } else {
-        // ورود کاربر موجود
         user.verificationCode = code;
         user.verificationCodeExpires = expires;
         logger.info(`Login attempt for existing user: ${email}`);
@@ -114,6 +120,68 @@ const userService = {
       throw new Error("User not found");
     }
     return user;
+  },
+
+  // به‌روزرسانی دسترسی‌های فیچر
+  updateFeatureAccess: async (userId, featureAccessData) => {
+    const user = await User.findById(userId);
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    featureAccessData.forEach((newAccess) => {
+      const feature = user.featureAccess.find(
+        (f) => f.feature === newAccess.feature
+      );
+      if (feature) {
+        feature.access = newAccess.access;
+      } else {
+        user.featureAccess.push(newAccess);
+      }
+    });
+
+    await user.save();
+    return user;
+  },
+
+  // دریافت اطلاعات کاربر لاگین‌شده
+  getCurrentUser: async (userId) => {
+    const user = await User.findById(userId);
+    if (!user) {
+      throw new Error("User not found");
+    }
+    return user;
+  },
+
+  // دریافت لیست کاربران
+  getUsers: async (currentUserId) => {
+    const currentUser = await User.findById(currentUserId);
+    if (!currentUser) {
+      throw new Error("Current user not found");
+    }
+
+    let query = { _id: { $ne: currentUserId } }; // حذف کاربر فعلی از لیست
+    if (currentUser.adminStatus === "ADMIN") {
+      query.adminStatus = { $ne: "SUPER_ADMIN" }; // حذف سوپر ادمین برای ادمین‌ها
+    }
+
+    const users = await User.find(query).select(
+      "_id username email lastName firstName userType adminStatus profilePath reportCount isBanned featureAccess"
+    );
+
+    return users.map((user) => ({
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      lastName: user.lastName,
+      firstName: user.firstName,
+      userType: user.userType,
+      adminStatus: user.adminStatus,
+      profilePath: user.profilePath,
+      reportCount: user.reportCount,
+      isBanned: user.isBanned,
+      featureAccess: user.featureAccess,
+    }));
   },
 
   // دریافت کاربر با شناسه

@@ -39,6 +39,7 @@ const userController = {
         email: user.email,
         userType: user.userType,
         adminStatus: user.adminStatus,
+        featureAccess: user.featureAccess,
         token,
       });
     } catch (error) {
@@ -59,6 +60,7 @@ const userController = {
         email: user.email,
         userType: user.userType,
         adminStatus: user.adminStatus,
+        featureAccess: user.featureAccess,
         token,
       });
     } catch (error) {
@@ -89,6 +91,7 @@ const userController = {
         profilePath: user.profilePath,
         reportCount: user.reportCount,
         isBanned: user.isBanned,
+        featureAccess: user.featureAccess,
       });
     } catch (error) {
       logger.error(`Error updating profile: ${error.message}`);
@@ -112,9 +115,66 @@ const userController = {
         profilePath: user.profilePath,
         reportCount: user.reportCount,
         isBanned: user.isBanned,
+        featureAccess: user.featureAccess,
       });
     } catch (error) {
       logger.error(`Error retrieving profile: ${error.message}`);
+      return formatResponse({}, true, error.message, 400);
+    }
+  },
+
+  // به‌روزرسانی دسترسی‌های فیچر
+  updateFeatureAccess: async (request, reply) => {
+    try {
+      const user = await userService.updateFeatureAccess(
+        request.user.id,
+        request.body
+      );
+      logger.info(`Feature access updated for user: ${user.email}`);
+      return formatResponse({
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        featureAccess: user.featureAccess,
+      });
+    } catch (error) {
+      logger.error(`Error updating feature access: ${error.message}`);
+      return formatResponse({}, true, error.message, 400);
+    }
+  },
+
+  // دریافت اطلاعات کاربر لاگین‌شده
+  getCurrentUser: async (request, reply) => {
+    try {
+      const user = await userService.getCurrentUser(request.user.id);
+      logger.info(`Current user retrieved: ${user.email}`);
+      return formatResponse({
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        lastName: user.lastName,
+        firstName: user.firstName,
+        userType: user.userType,
+        adminStatus: user.adminStatus,
+        profilePath: user.profilePath,
+        reportCount: user.reportCount,
+        isBanned: user.isBanned,
+        featureAccess: user.featureAccess,
+      });
+    } catch (error) {
+      logger.error(`Error retrieving current user: ${error.message}`);
+      return formatResponse({}, true, error.message, 400);
+    }
+  },
+
+  // دریافت لیست کاربران
+  getUsers: async (request, reply) => {
+    try {
+      const users = await userService.getUsers(request.user.id);
+      logger.info(`User list retrieved by user: ${request.user.id}`);
+      return formatResponse(users);
+    } catch (error) {
+      logger.error(`Error retrieving users: ${error.message}`);
       return formatResponse({}, true, error.message, 400);
     }
   },

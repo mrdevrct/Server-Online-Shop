@@ -1,5 +1,16 @@
+// user.model.js
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+
+// لیست فیچرهای پیش‌فرض
+const defaultFeatures = [
+  { id: 1, feature: "HOME", access: "FULL_ACCESS" },
+  { id: 2, feature: "ADD_TICKET", access: "NO_ACCESS" },
+  { id: 3, feature: "VIEW_TICKET", access: "FULL_ACCESS" },
+  { id: 4, feature: "EDIT_TICKET", access: "FULL_ACCESS" },
+  { id: 5, feature: "DELETE_TICKET", access: "FULL_ACCESS" },
+  // فیچرهای دیگر را می‌توانید اضافه کنید
+];
 
 const featureAccessSchema = new mongoose.Schema({
   id: { type: Number, required: true },
@@ -13,7 +24,7 @@ const featureAccessSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema(
   {
-    username: { type: String, unique: true }, // نام کاربری اختیاری، توسط سرور تولید می‌شود
+    username: { type: String, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String },
     lastName: { type: String },
@@ -51,7 +62,7 @@ userSchema.pre("save", async function (next) {
     if (userCount === 0) {
       this.userType = "ADMIN";
       this.adminStatus = "SUPER_ADMIN";
-      this.featureAccess = [{ id: 1, feature: "HOME", access: "FULL_ACCESS" }];
+      this.featureAccess = defaultFeatures; // دسترسی‌های پیش‌فرض برای سوپر ادمین
       this.username = "superadmin";
     }
   }

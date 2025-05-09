@@ -1,3 +1,4 @@
+// user.dto.js
 const { z } = require("zod");
 
 const authDto = z.object({
@@ -21,9 +22,18 @@ const updateProfileDto = z.object({
   profilePath: z.string().optional(),
 });
 
+const updateFeatureAccessDto = z.array(
+  z.object({
+    id: z.number(),
+    feature: z.string().nonempty(),
+    access: z.enum(["FULL_ACCESS", "READ_ONLY", "NO_ACCESS"]),
+  })
+);
+
 module.exports = {
   authDto,
   verifyCodeDto,
   loginWithPasswordDto,
   updateProfileDto,
+  updateFeatureAccessDto,
 };
