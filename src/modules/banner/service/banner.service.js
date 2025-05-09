@@ -1,4 +1,4 @@
-const Banner = require("./banner.model");
+const Banner = require("../model/banner.model");
 
 const bannerService = {
   // ایجاد بنر

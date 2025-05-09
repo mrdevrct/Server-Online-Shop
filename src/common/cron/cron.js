@@ -1,5 +1,5 @@
 const cron = require("node-cron");
-const Banner = require("../../modules/banner/banner.model");
+const Banner = require("../../modules/banner/model/banner.model");
 const logger = require("../logger/winston");
 
 const setupCronJobs = () => {

@@ -13,7 +13,7 @@ const setupMiddlewares = (fastify) => {
   });
 
   // ثبت میدلور احراز هویت به‌صورت دکوراتور (برای استفاده در روت‌ها)
-  fastify.decorateRequest("auth", authMiddleware);
+  fastify.decorate("auth", authMiddleware);
 };
 
 module.exports = { setupMiddlewares };

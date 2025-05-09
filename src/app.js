@@ -21,16 +21,26 @@ fastify.register(require("@fastify/cors"), {
 // ثبت WebSocket
 fastify.register(websocketPlugin);
 
+fastify.addHook('onRequest', (request, reply, done) => {
+  logger.debug(`Incoming request: ${request.method} ${request.url}`);
+  done();
+});
+
 // هوک برای لاگ کردن درخواست‌ها
 fastify.addHook("onResponse", (request, reply, done) => {
-  const ping = reply.getResponseTime(); // زمان پاسخ (پینگ) در میلی‌ثانیه
-  logger.info("Request completed", {
-    method: request.method,
-    url: request.url,
-    status: reply.statusCode,
-    ping: ping.toFixed(2),
-  });
-  done();
+  try {
+    const ping = reply.getResponseTime();
+    logger.info("Request completed", {
+      method: request.method,
+      url: request.url,
+      status: reply.statusCode,
+      ping: ping.toFixed(2),
+    });
+    done();
+  } catch (error) {
+    logger.error(`Error in onResponse hook: ${error.message}`);
+    done(error);
+  }
 });
 
 // تنظیمات میدلورها و اینترسپتورها

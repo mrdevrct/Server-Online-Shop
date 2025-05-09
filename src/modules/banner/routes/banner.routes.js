@@ -1,6 +1,6 @@
-const { bannerController } = require("./banner.controller");
-const { createBannerDto, updateBannerDto } = require("./banner.dto");
-const validateMiddleware = require("../../middlewares/validate.middleware");
+const { bannerController } = require("../controller/banner.controller");
+const { createBannerDto, updateBannerDto } = require("../dto/banner.dto");
+const validateMiddleware = require("../../../middlewares/validate.middleware");
 
 const bannerRoutes = async (fastify, options) => {
   // دریافت همه بنرها

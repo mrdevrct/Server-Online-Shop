@@ -1,6 +1,6 @@
-const { bannerService } = require("./banner.service");
-const logger = require("../../common/logger/winston");
-const { formatResponse } = require("../../common/helpers/formatResponse");
+const { bannerService } = require("../service/banner.service");
+const logger = require("../../../common/logger/winston");
+const { formatResponse } = require("../../../common/helpers/formatResponse");
 
 const bannerController = {
   // ایجاد بنر

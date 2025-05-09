@@ -1,3 +1,117 @@
 ℹ️ [INFO] ۱۴۰۴/۰۲/۱۸, ۱۷:۱۱:۳۵ | Banner created: ارسال رایگان
 ℹ️ [INFO] ۱۴۰۴/۰۲/۱۸, ۱۷:۱۷:۰۵ | Banner created: ارسال رایگان
 ℹ️ [INFO] ۱۴۰۴/۰۲/۱۸, ۱۷:۱۷:۱۱ | Banner created: ارسال رایگان
+❗ [ERROR] ۱۴۰۴/۰۲/۱۸, ۲۰:۴۱:۵۰ | Error sending email to admin@example.com: C0BB0D4FF87F0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:355:
+
+❗ [ERROR] ۱۴۰۴/۰۲/۱۸, ۲۰:۴۱:۵۰ | Error registering user: Failed to send verification code
+❗ [ERROR] ۱۴۰۴/۰۲/۱۸, ۲۰:۴۷:۴۳ | Error registering user: Email already registered
+❗ [ERROR] ۱۴۰۴/۰۲/۱۸, ۲۰:۴۷:۴۳ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۸, ۲۰:۴۸:۰۰ | Error sending email to admin@example.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-3a1f5a2cf1bsm521766f8f.72 - gsmtp
+❗ [ERROR] ۱۴۰۴/۰۲/۱۸, ۲۰:۴۸:۰۰ | Error registering user: Failed to send verification code
+❗ [ERROR] ۱۴۰۴/۰۲/۱۸, ۲۰:۴۸:۰۰ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۸, ۲۰:۴۸:۱۱ | Error sending email to admin@example.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-3a1f5a4cc44sm503574f8f.85 - gsmtp
+❗ [ERROR] ۱۴۰۴/۰۲/۱۸, ۲۰:۴۸:۱۱ | Error registering user: Failed to send verification code
+❗ [ERROR] ۱۴۰۴/۰۲/۱۸, ۲۰:۴۸:۱۱ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۳۸:۰۶ | Error sending email to admin@example.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ad2192c8b8asm136098866b.5 - gsmtp
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۳۸:۰۶ | Error registering user: Failed to send verification code
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۳۸:۰۶ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۳۸:۳۲ | Error sending email to ali@example.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 4fb4d7f45d1cf-5fc9d700e6fsm1209626a12.62 - gsmtp
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۳۸:۳۲ | Error registering user: Failed to send verification code
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۳۸:۳۲ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۳۹:۳۶ | Error sending email to rasool@gmail.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ad2285be37dsm32697066b.13 - gsmtp
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۳۹:۳۶ | Error registering user: Failed to send verification code
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۳۹:۳۶ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۲:۲۴ | User verified: admin@example.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۲:۲۴ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۲:۵۱ | User verified: ali@example.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۲:۵۱ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۳:۱۲ | User verified: rasool@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۳:۱۲ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۴:۴۵ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۶:۴۰ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۶:۴۶ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۷:۱۰ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۸:۰۲ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۸:۱۶ | Error sending email to user1@example.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 4fb4d7f45d1cf-5fc9d700d6esm1222334a12.60 - gsmtp
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۸:۱۶ | Error registering user: Failed to send verification code
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۸:۱۶ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۸:۵۰ | User verified: user1@example.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۴:۴۸:۵۰ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۰:۰۲ | New user created: superadmin@gmail.com with username user-20250509
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۰:۰۲ | Error sending email to superadmin@gmail.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 4fb4d7f45d1cf-5fc9d700e56sm1237139a12.57 - gsmtp
+⚠️ [WARN] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۰:۰۲ | Failed to send verification email to superadmin@gmail.com: Failed to send verification code
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۰:۰۲ | Verification code for superadmin@gmail.com: 328103
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۰:۰۲ | Auth processed for: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۰:۰۲ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۰:۴۰ | User verified: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۰:۴۰ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۱:۱۱ | New user created: ali2006@gmail.com with username user-20250509
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۱:۱۱ | Error sending email to ali2006@gmail.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ad2197bd525sm137241666b.144 - gsmtp
+⚠️ [WARN] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۱:۱۱ | Failed to send verification email to ali2006@gmail.com: Failed to send verification code
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۱:۱۱ | Verification code for ali2006@gmail.com: 678212
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۱:۱۱ | Auth processed for: ali2006@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۱:۱۱ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۲:۲۳ | User verified: ali2006@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۲:۲۳ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۲:۵۸ | Login attempt for existing user: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۲:۵۹ | Error sending email to superadmin@gmail.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ad2197be6d7sm135082466b.157 - gsmtp
+⚠️ [WARN] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۲:۵۹ | Failed to send verification email to superadmin@gmail.com: Failed to send verification code
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۲:۵۹ | Verification code for superadmin@gmail.com: 282006
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۲:۵۹ | Auth processed for: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۲:۵۹ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۳:۲۶ | User verified: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۳:۲۶ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۶:۳۷ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۰۹:۱۸ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۱:۰۳ | Login attempt for existing user: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۱:۰۴ | Error sending email to superadmin@gmail.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ad2197bd2c0sm136495166b.130 - gsmtp
+⚠️ [WARN] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۱:۰۴ | Failed to send verification email to superadmin@gmail.com: Failed to send verification code
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۱:۰۴ | Verification code for superadmin@gmail.com: 374071
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۱:۰۴ | Auth processed for: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۱:۰۴ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۱:۳۵ | User verified: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۱:۳۵ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۴:۳۲ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۷:۵۵ | Login attempt for existing user: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۷:۵۶ | Error sending email to superadmin@gmail.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ad22c563e34sm6362766b.137 - gsmtp
+⚠️ [WARN] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۷:۵۶ | Failed to send verification email to superadmin@gmail.com: Failed to send verification code
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۷:۵۶ | Verification code for superadmin@gmail.com: 565699
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۷:۵۶ | Auth processed for: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۷:۵۶ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۸:۲۱ | User verified: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۸:۲۱ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۱۹:۰۸ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۰:۴۵ | Auth middleware error: invalid signature
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۰:۴۵ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۰۴ | Login attempt for existing user: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۰۵ | Error sending email to superadmin@gmail.com: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ad2192c9bc0sm138634466b.30 - gsmtp
+⚠️ [WARN] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۰۵ | Failed to send verification email to superadmin@gmail.com: Failed to send verification code
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۰۵ | Verification code for superadmin@gmail.com: 303780
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۰۵ | Auth processed for: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۰۵ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۳۷ | User verified: superadmin@gmail.com
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۳۷ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۵۷ | Report created by 681de73a8121e2c57c3bdb1a against 681de77f8121e2c57c3bdb24
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۵۷ | Report created: 681dec5d11fd38a14102151a
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۱:۵۷ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۴:۴۰ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۴:۵۷ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۵:۲۸ | User ali2006@gmail.com banned by super admin superadmin@gmail.com
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۵:۲۸ | User banned: 681de77f8121e2c57c3bdb24
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۵:۲۸ | Error in onResponse hook: reply.getResponseTime is not a function
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۵:۵۱ | Error in onResponse hook: reply.getResponseTime is not a function
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۸:۱۷ | User ali2006@gmail.com unbanned by super admin superadmin@gmail.com
+ℹ️ [INFO] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۸:۱۷ | User unbanned: 681de77f8121e2c57c3bdb24
+❗ [ERROR] ۱۴۰۴/۰۲/۱۹, ۱۵:۲۸:۱۷ | Error in onResponse hook: reply.getResponseTime is not a function

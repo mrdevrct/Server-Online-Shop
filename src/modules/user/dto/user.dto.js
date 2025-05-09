@@ -1,7 +1,6 @@
 const { z } = require("zod");
 
-const registerDto = z.object({
-  username: z.string().min(3).nonempty(),
+const authDto = z.object({
   email: z.string().email().nonempty(),
 });
 
@@ -23,7 +22,7 @@ const updateProfileDto = z.object({
 });
 
 module.exports = {
-  registerDto,
+  authDto,
   verifyCodeDto,
   loginWithPasswordDto,
   updateProfileDto,
